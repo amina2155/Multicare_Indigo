@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "365181753983",
+    "firebase_url": "https://multicare-indigo-9e4c5-default-rtdb.firebaseio.com",
+    "project_id": "multicare-indigo-9e4c5",
+    "storage_bucket": "multicare-indigo-9e4c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:365181753983:android:65bd1e289f356d9516bd4a",
+        "android_client_info": {
+          "package_name": "com.example.multicare_indigo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "365181753983-49c75af6sfar7o1cftr1hob1m9j7890r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.multicare_indigo",
+            "certificate_hash": "999d0a8e3d7f91f0cc6967c6640703220bb4d0ab"
+          }
+        },
+        {
+          "client_id": "365181753983-iv95fv8h7a67on9go0tp7thnamr0sf4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiR9WVc3E_7cjAZ92dciheqSo4WDMHNQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "365181753983-iv95fv8h7a67on9go0tp7thnamr0sf4n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
