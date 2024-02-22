@@ -99,6 +99,7 @@ public class EnterOTP extends AppCompatActivity {
                                     Toast.makeText(EnterOTP.this, "Successful !", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), Forgetpass.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.putExtra("phone_number_current", tempo_num);
                                     startActivity(intent);
                                 }
                                 else

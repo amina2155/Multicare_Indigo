@@ -70,13 +70,32 @@ public class SendMessage extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         if(snapshot.exists()) {
+                            try {
+                                for(int i = 1 ; i < 5 ; i++)
+                                {
+                                    String emergency = snapshot.child(numberFrom).child(String.valueOf(i)).child("number").getValue(String.class);
+                                    System.out.println(emergency);
+                                    // Check if the app has permission to send SMS
+                                    if (ActivityCompat.checkSelfPermission(SendMessage.this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+                                        // Permission already granted, send SMS
+                                        sendMessage(emergency);
+                                    } else {
+                                        // Request permission
+                                        ActivityCompat.requestPermissions(SendMessage.this, new String[]{Manifest.permission.SEND_SMS}, 123);
+                                    }
 
-                            for(int i = 1 ; i < 5 ; i++)
-                            {
-                                String emergency = snapshot.child(numberFrom).child(String.valueOf(i)).child("number").getValue(String.class);
-                                System.out.println(emergency);
-                                sendMessage(emergency);
+//                                    sendMessage(emergency);
+                                }
+//                                Intent intent2 = new Intent(getApplicationContext(), HomeMenu.class);
+//                                intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                                startActivity(intent2);
+//                                finish();
                             }
+                           catch (Exception e){
+                               System.out.println("*************************************************************************************************************************************************************************");
+                               System.out.println(e.getMessage());
+                           }
 
                         }
 
@@ -92,19 +111,22 @@ public class SendMessage extends AppCompatActivity {
     }
 
     private void sendMessage(String em_ph) {
+        System.out.println(em_ph);
         try {
             SmsManager smsManager = SmsManager.getDefault();
             ActivityCompat.requestPermissions(SendMessage.this, new String[] {android.Manifest.permission.SEND_SMS}, PackageManager.PERMISSION_GRANTED);
             ActivityCompat.requestPermissions(SendMessage.this, new String[] {Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
             smsManager.sendTextMessage(em_ph, null, finalMessage, null, null);
             Toast.makeText(getApplicationContext(), "SMS Sent!",
-                    Toast.LENGTH_LONG).show();
-            Intent intent2 = new Intent(getApplicationContext(), HomeMenu.class);
-                startActivity(intent2);
+                    Toast.LENGTH_SHORT).show();
+
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(),
                     e.getMessage(),
                     Toast.LENGTH_LONG).show();
+            System.out.println("*************************************************************************************************************************************************************************");
+            System.out.println(e.getMessage());
+            System.out.println(em_ph);
             e.printStackTrace();
         }
     }

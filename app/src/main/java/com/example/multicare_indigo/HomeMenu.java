@@ -9,6 +9,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -90,8 +91,10 @@ public class HomeMenu extends AppCompatActivity implements View.OnClickListener 
 
                 intent.putExtra("emergencyMessage", em);
 
+
+
                 startActivity(intent);
-                finish();
+
 
             }
         });
@@ -126,7 +129,7 @@ public class HomeMenu extends AppCompatActivity implements View.OnClickListener 
                     }
                 });
             } else {
-                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 startActivity(intent);
             }
@@ -217,10 +220,12 @@ public class HomeMenu extends AppCompatActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.logout:
             case R.id.logout_icon:
+                clearSavedCredentials();
                 FirebaseAuth.getInstance().signOut();
-                finish();
                 Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 break;
 
             case R.id.profile_icon:
@@ -232,6 +237,9 @@ public class HomeMenu extends AppCompatActivity implements View.OnClickListener 
 //                Intent intent2 = new Intent(getApplicationContext(), ShowNearby.class);
 //                startActivity(intent2);
 
+                break;
+
+            default:
                 break;
         }
     }
@@ -276,6 +284,14 @@ public class HomeMenu extends AppCompatActivity implements View.OnClickListener 
         }
 
         message = address;
+    }
+
+    private void clearSavedCredentials() {
+        // Clear saved user information from SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("MyPrefsFile", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
     }
 
     //////

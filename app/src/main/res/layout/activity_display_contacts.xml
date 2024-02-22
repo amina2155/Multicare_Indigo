@@ -9,7 +9,7 @@
 
     <EditText
         android:id="@+id/contact1"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="184dp"
         android:background="@drawable/radiusbox"
@@ -29,7 +29,7 @@
 
     <EditText
         android:id="@+id/contact4"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/contact3"
         android:layout_marginTop="40dp"
@@ -52,7 +52,7 @@
 
     <EditText
         android:id="@+id/contact2"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/contact1"
         android:layout_marginTop="40dp"
@@ -73,7 +73,7 @@
 
     <EditText
         android:id="@+id/contact3"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/contact2"
         android:layout_marginTop="40dp"

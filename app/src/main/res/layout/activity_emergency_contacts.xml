@@ -7,71 +7,67 @@
     android:background="@drawable/home_background"
     tools:context=".Emergency_Contacts">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="420dp"
-        android:layout_height="366dp"
-        android:orientation="vertical"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp">
 
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65sp"
-            android:layout_marginTop="120sp"
-            android:layout_marginRight="60sp"
-            android:drawableLeft="@drawable/ic_baseline_person_outline_24"
-            android:drawablePadding="15sp"
-            android:hint="Full Name"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="15sp"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65sp"
-            android:layout_marginTop="0sp"
-            android:layout_marginRight="60sp"
-            android:drawableLeft="@android:drawable/stat_sys_speakerphone"
-            android:drawablePadding="25sp"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="252dp"
+        android:drawableLeft="@android:drawable/stat_sys_speakerphone"
+        android:drawablePadding="25sp"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/blood"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="65sp"
-            android:layout_marginTop="0sp"
-            android:layout_marginRight="60sp"
-            android:drawableLeft="@android:drawable/ic_notification_overlay"
-            android:drawablePadding="25sp"
-            android:hint="Blood Type"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            tools:ignore="MissingConstraints" />
-
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/blood"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@android:drawable/ic_notification_overlay"
+        android:drawablePadding="25sp"
+        android:hint="Blood Type"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="92dp"
         android:backgroundTint="#68B7F6"
         android:paddingHorizontal="50sp"
         android:paddingVertical="10sp"
@@ -80,16 +76,16 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.501"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="137dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/display"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="44dp"
         android:backgroundTint="#68B7F6"
         android:paddingHorizontal="50sp"
         android:paddingVertical="10sp"
@@ -98,10 +94,9 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/save"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.504"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="125dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,6 +14,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class ProfileView extends AppCompatActivity {
 
+    public static final String EXTRA_PHONE_NUMBER = "phone_no";
+    public static final String EXTRA_EMAIL = "email";
+    public static final String EXTRA_NAME = "name";
+    public static final String EXTRA_BLOOD_GROUP = "blood";
+    public static final String EXTRA_GENDER = "gender";
+
     TextView FullName;
     EditText emailID, bloodGroup, gender, phoneNum;
     Button savedcontacts;
@@ -32,17 +38,17 @@ public class ProfileView extends AppCompatActivity {
         phoneNum = findViewById(R.id.editTextPhone);
         savedcontacts=findViewById(R.id.contactsbutton);
 
-        String user_phone_num = intentinput.getStringExtra("phone_no");
-        String user_email = intentinput.getStringExtra("email");
-        String user_name = intentinput.getStringExtra("name");
-        String user_blood = intentinput.getStringExtra("blood");
-        String user_gender = intentinput.getStringExtra("gender");
+        String user_phone_num = intentinput.getStringExtra(ProfileView.EXTRA_PHONE_NUMBER);
+        String user_email = intentinput.getStringExtra(ProfileView.EXTRA_EMAIL);
+        String user_name = intentinput.getStringExtra(ProfileView.EXTRA_NAME);
+        String user_blood = intentinput.getStringExtra(ProfileView.EXTRA_BLOOD_GROUP);
+        String user_gender = intentinput.getStringExtra(ProfileView.EXTRA_GENDER);
 
-        FullName.setText(user_name);
-        emailID.setText(user_email);
-        bloodGroup.setText(user_blood);
-        gender.setText(user_gender);
-        phoneNum.setText(user_phone_num);
+        FullName.setText(String.valueOf(user_name));
+        emailID.setText(String.valueOf(user_email));
+        bloodGroup.setText(String.valueOf(user_blood));
+        gender.setText(String.valueOf(user_gender));
+        phoneNum.setText(String.valueOf(user_phone_num));
         savedcontacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

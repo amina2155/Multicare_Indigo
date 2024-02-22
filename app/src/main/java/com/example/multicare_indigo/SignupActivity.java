@@ -51,7 +51,7 @@ public class SignupActivity extends AppCompatActivity {
         blood = (EditText)findViewById(R.id.blood);
         male = (RadioButton) findViewById(R.id.male);
         female = (RadioButton) findViewById(R.id.female);
-        gender_button = (LinearLayout) findViewById(R.id.radio);
+        gender_button = (LinearLayout) findViewById(R.id.genderRadioGroup);
         signup = (Button)findViewById(R.id.signUp);
 
         signup.setOnClickListener(new View.OnClickListener() {

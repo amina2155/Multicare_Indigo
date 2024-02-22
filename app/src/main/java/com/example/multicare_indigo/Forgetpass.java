@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 public class Forgetpass extends AppCompatActivity {
 
     EditText newp, confirmp;
@@ -34,13 +33,9 @@ public class Forgetpass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgetpass);
 
-        Intent intentInput = getIntent();
-        String phone_num = intentInput.getStringExtra("current_num");
-
         newp = findViewById(R.id.setNew);
         confirmp = findViewById(R.id.confirm);
         change = findViewById(R.id.change);
-
 
         change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,17 +43,15 @@ public class Forgetpass extends AppCompatActivity {
                 changePasscode();
             }
         });
-
     }
 
     private void changePasscode() {
-
         String pass = newp.getText().toString();
         String confirmPassword = confirmp.getText().toString();
         Intent intentInput = getIntent();
-        String phone_num = intentInput.getStringExtra("current_num");
+        String phone_num = intentInput.getStringExtra("phone_number_current");
 
-        if(!pass.isEmpty()) {
+        if (!pass.isEmpty()) {
             if (pass.length() < 6) {
                 newp.setError("Too short!");
             } else {
@@ -68,28 +61,28 @@ public class Forgetpass extends AppCompatActivity {
                         confirmp.setError(null);
 
                         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                        System.out.println(phone_num);
-                        reference = firebaseDatabase.getReference("userdata").child(phone_num).child("password").setValue(confirmPassword).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(), "Password changed successfully!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                }
-                                else {
-                                    Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
-
-                                }
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                e.printStackTrace();
-                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
+                        reference = firebaseDatabase.getReference("userdata").child(phone_num).child("password").setValue(pass)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getApplicationContext(), "Password changed successfully!", Toast.LENGTH_SHORT).show();
+                                            Intent intent = new Intent(getApplicationContext(), Login.class);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish(); // Optional: Finish the current activity
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
 
                     } else {
                         confirmp.setError("Passwords do not match");
@@ -98,9 +91,7 @@ public class Forgetpass extends AppCompatActivity {
                     confirmp.setError("Please confirm your password");
                 }
             }
-        }
-        else
-        {
+        } else {
             newp.setError("Enter something");
         }
     }
