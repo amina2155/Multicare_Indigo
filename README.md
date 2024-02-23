@@ -3,3 +3,4 @@ Multicare Indigo is a mobile app to help individuals in their emergency situatio
 
 
 ![1](https://github.com/amina2155/Multicare_Indigo/assets/98386611/79f8597b-4fef-46b0-883d-8d00c8fc0a8d)
+![2](https://github.com/amina2155/Multicare_Indigo/assets/98386611/2a86d3d8-7018-4b45-8b55-1351d347d09c)
